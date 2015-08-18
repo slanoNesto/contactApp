@@ -1,0 +1,65 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>TUTAPP</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+</head>
+
+<body ng-app="tutapp">
+    
+    <div class="container" ng-controller="HomeController as homeVm">
+        <h1>Idiot Management App</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Number</th>
+                    <th>Action</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="text" class="form-control" ng-model="homeVm.contact.name">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" ng-model="homeVm.contact.email">
+                    </td>
+                    <td>
+                        <input type="text" class="form-control" ng-model="homeVm.contact.number">
+                    </td>
+                    <td>
+                        <button class="btn btn-primary" ng-click="homeVm.addContact()">Add new idiot</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-info" ng-click="homeVm.updateContact()">Update</button>
+                        <button class="btn btn-info" ng-click="homeVm.contact = {}">Clear</button>
+                    </td>
+                </tr>
+                <tr ng-repeat="contact in homeVm.contactList">
+                    <td>{{contact.name}}</td>
+                    <td>{{contact.email}}</td>
+                    <td>{{contact.number}}</td>
+                    <td>
+                        <button class="btn btn-danger" ng-click="homeVm.removeContact(contact)">Remove</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-warning" ng-click="homeVm.editContact(contact)">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+
+<script src="components/app.js"></script>
+
+<script src="components/home/home.module.js"></script>
+<script src="components/home/home.controller.js"></script>
+<script src="components/home/home.factory.js"></script>
+</body>
+</html>
